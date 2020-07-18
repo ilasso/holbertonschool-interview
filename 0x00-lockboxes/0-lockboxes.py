@@ -2,6 +2,8 @@
 def canUnlockAll(boxes):
     if boxes == [[]]:
         return False
+    if max(boxes)[0] != len(boxes) - 1:
+        return False
 
     dictboxes = {0: 'open'}
     dictboxes2 = {}

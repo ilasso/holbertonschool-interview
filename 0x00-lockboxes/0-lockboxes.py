@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 def canUnlockAll(boxes):
+    if boxes == []:
+        return False
+        
     dictboxes = {0: 'open'}
     dictboxes2 = {}
 

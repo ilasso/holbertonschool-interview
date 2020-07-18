@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def canUnlockAll(boxes):
-    if not boxes:
+    if boxes == [[]]:
         return False
 
     dictboxes = {0: 'open'}
@@ -36,5 +36,4 @@ def canUnlockAll(boxes):
         # if all boxes are opened return true
         if (len(boxes) == len(dictboxes)) and count:
             return True
-    print(dictboxes)
     return False

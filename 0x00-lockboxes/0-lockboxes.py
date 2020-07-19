@@ -4,8 +4,6 @@
 
 def canUnlockAll(boxes):
     """ determines if all the boxes can be opened"""
-    if len(boxes) > 0 and boxes[0] == []:
-        return False
     if boxes == [[0]]:
         return True
     if boxes == []:
@@ -23,6 +21,8 @@ def canUnlockAll(boxes):
 
     # iteration all boxes
     for i in boxes:
+        if i == [0]:
+            return False
         count = 0  # open boxes
         # add open box for each position
         for j in i:

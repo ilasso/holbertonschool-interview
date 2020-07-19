@@ -31,7 +31,7 @@ def canUnlockAll(boxes):
                 dictboxes[j] = 'open'
                 count = count + 1
                 # if dont have to add a opened box return false
-                #if count == 0:
+                # if count == 0:
                 #    return False
         # checks if each box opened have keys to open more boxes
         for k, l in dictboxes.items():
@@ -44,7 +44,7 @@ def canUnlockAll(boxes):
                 dictboxes[n] = o
                 count = count + 1
         # if doesnt have more boxes to open return false
-        #if count == 0:
+        # if count == 0:
         #    return False
         # if all boxes are opened return true
         if (len(boxes) == len(dictboxes)) and count:

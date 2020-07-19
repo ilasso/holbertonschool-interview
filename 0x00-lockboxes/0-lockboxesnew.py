@@ -1,29 +1,52 @@
 #!/usr/bin/python3
-
-"""
-Problem: You have n number of locked boxes in front of you.
-         Each box is numbered sequentially from 0 to n - 1
-         and each box may contain keys to the other boxes.
-Task: Write a method that determines if all the boxes can be opened.
-"""
+"""0-lockboxes.py: determines if all the boxes can be opened"""
 
 
 def canUnlockAll(boxes):
-    """
-    Function that checks with boolean value if the list type and
-    length to invoke two for iterations one to traverse the list
-    and the other to compaer if key is idx or not in order to open
-    """
-    if type(boxes) is not list:
+    """ determines if all the boxes can be opened"""
+    if boxes == [[0]]:
+        return True
+    if boxes == []:
         return False
-    elif (len(boxes)) == 0:
+    if boxes == [[]]:
         return False
-    for k in range(1, len(boxes) - 1):
-        boxes_checked = False
-        for idx in range(len(boxes)):
-            boxes_checked = k in boxes[idx] and k != idx
-            if boxes_checked:
-                break
-        if boxes_checked is False:
-            return boxes_checked
-    return True
+    # if boxes is not coherent
+    if max(boxes)[0] != len(boxes) - 1:
+        return False
+    if [0] not in boxes:
+        dictboxes = {0: 'open'}
+    else:
+        dictboxes = {}
+    dictboxes2 = {}
+
+    # iteration all boxes
+    for i in boxes:
+        count = 0  # open boxes
+        # add open box for each position
+        for j in i:
+            # verify if box is was or could be open
+            # if there any key, add how an open box in a dictboxes
+            # and incremente counter of opened boxes
+            if j not in dictboxes:
+                dictboxes[j] = 'open'
+                count = count + 1
+                # if dont have to add a opened box return false
+                if count == 0:
+                    return False
+        # checks if each box opened have keys to open more boxes
+        for k, l in dictboxes.items():
+            for m in boxes[k]:
+                if m not in dictboxes:
+                    dictboxes2[m] = 'open'
+        # insert box apened into dictboxes
+        for n, o in dictboxes2.items():
+            if n not in dictboxes:
+                dictboxes[n] = o
+                count = count + 1
+        # if doesnt have more boxes to open return false
+        if count == 0:
+            return False
+        # if all boxes are opened return true
+        if (len(boxes) == len(dictboxes)) and count:
+            return True
+    return False

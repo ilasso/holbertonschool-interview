@@ -22,17 +22,20 @@ def canUnlockAll(boxes):
     else:
         dictboxes = {}
     dictboxes2 = {}
-
     # iteration all boxes
+    count = 0  # open boxes
     for i in boxes:
         if i == [0]:
-            return False
-        count = 0  # open boxes
+            break
+        if i == []:
+            break
         # add open box for each position
         for j in i:
             # verify if box is was or could be open
             # if there any key, add how an open box in a dictboxes
             # and incremente counter of opened boxes
+            if boxes[j] == []:
+                return False
             if j not in dictboxes:
                 dictboxes[j] = 'open'
                 count = count + 1
@@ -46,6 +49,7 @@ def canUnlockAll(boxes):
             if n not in dictboxes:
                 dictboxes[n] = o
                 count = count + 1
-        if (len(boxes) == len(dictboxes)) and count:
+        if (len(boxes) == len(dictboxes)):
             return True
+        count = count + 1
     return False

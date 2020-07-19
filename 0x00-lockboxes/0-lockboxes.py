@@ -4,6 +4,8 @@
 
 def canUnlockAll(boxes):
     """ determines if all the boxes can be opened"""
+    if not len(boxes):
+        return False
     if boxes == [[0]]:
         return True
     if boxes == []:

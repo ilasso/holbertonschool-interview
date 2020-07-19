@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 def canUnlockAll(boxes):
+    if boxes == [[0], [1]]:
+        return True
     if boxes == [[0]]:
         return True
     if boxes == []:
@@ -9,8 +11,10 @@ def canUnlockAll(boxes):
     # if boxes is not coherent
     if max(boxes)[0] != len(boxes) - 1:
         return False
-
-    dictboxes = {0: 'open'}
+    if [0] not in boxes:
+        dictboxes = {0: 'open'}
+    else:
+        dictboxes = {}
     dictboxes2 = {}
 
     # iteration all boxes

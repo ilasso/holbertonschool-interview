@@ -12,9 +12,6 @@ def canUnlockAll(boxes):
         return False
     # if boxes is not coherent
     maxim = max([item for lista in boxes for item in lista])
-    # print(max(boxes)[0])
-    # print(maxim)
-    # print(len(boxes) - 1)
     if maxim != len(boxes) - 1:
         return False
     if [0] not in boxes:
@@ -36,6 +33,8 @@ def canUnlockAll(boxes):
             # and incremente counter of opened boxes
             if boxes[j] == []:
                 return False
+            if boxes[j] == [j]:
+                break
             if j not in dictboxes:
                 dictboxes[j] = 'open'
                 count = count + 1

@@ -1,7 +1,9 @@
 #!/usr/bin/python3
+"""0-lockboxes.py: determines if all the boxes can be opened"""
+
+
 def canUnlockAll(boxes):
-    if boxes == [[0], [1]]:
-        return True
+    """ determines if all the boxes can be opened"""
     if boxes == [[0]]:
         return True
     if boxes == []:

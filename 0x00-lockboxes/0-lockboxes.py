@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 def canUnlockAll(boxes):
+    if boxes == []:
+        return False
     if boxes == [[]]:
         return False
+    # if boxes is not coherent
     if max(boxes)[0] != len(boxes) - 1:
         return False
 

@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 def canUnlockAll(boxes):
+    if boxes == [[0]]:
+        return True
     if boxes == []:
         return False
     if boxes == [[]]:

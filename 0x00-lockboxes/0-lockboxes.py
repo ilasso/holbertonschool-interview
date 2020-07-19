@@ -12,9 +12,9 @@ def canUnlockAll(boxes):
         return False
     # if boxes is not coherent
     maxim = max([item for lista in boxes for item in lista])
-    print(max(boxes)[0])
-    print(maxim)
-    print(len(boxes) - 1)
+    # print(max(boxes)[0])
+    # print(maxim)
+    # print(len(boxes) - 1)
     if maxim != len(boxes) - 1:
         return False
     if [0] not in boxes:

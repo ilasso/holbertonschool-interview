@@ -5,7 +5,9 @@
 def canUnlockAll(boxes):
     """ determines if all the boxes can be opened"""
     # validate if boxes is a list
-
+    if type(boxes) is not list or not all(type(box) is list for box in boxes):
+        return False
+        
     if type(boxes) is not list:
         return False
 

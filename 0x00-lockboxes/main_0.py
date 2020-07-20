@@ -8,6 +8,12 @@ canUnlockAll = __import__('0-lockboxes').canUnlockAll
 #boxes = [1,2,3]
 #print(canUnlockAll(boxes))
 
+boxes = [[1], [5], [2]] # false
+print(canUnlockAll(boxes))
+
+boxes = [[1], [2], [5]] # true
+print(canUnlockAll(boxes))
+
 # debe dar  true
 boxes = [[1], [1,2],[1,2,3],[1,2,3,4],[1,2,3,4,5],[1,2,3,4,5,6]]
 print(canUnlockAll(boxes))

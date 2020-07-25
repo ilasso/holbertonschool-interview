@@ -8,11 +8,8 @@
  * Return: address of the new element or NULL if it fails
  */
 listint_t *insert_node(listint_t **head, int number)
-{
-	listint_t *p, *new, *current;
-	int count = 0;
+{	listint_t *p = *head, *new, *current;
 
-	p = *head;
 	new = new_node(number);
 	if (new == NULL)
 		return (NULL);
@@ -30,10 +27,13 @@ listint_t *insert_node(listint_t **head, int number)
 		*head = new;
 		p = *head;
 		return (new); }
-	while (p->next != NULL && p->n < number)
+	if (p->n > number)
+	{	new->next = p;
+		*head = new;
+		return (new); }
+	while (p->next != NULL && p->n <= number)
 	{	current = p; /*search to insert node */
-		p = p->next;
-		count++; }
+		p = p->next; }
 	if (p->next == NULL)
 	{
 		if (p->n > new->n)

@@ -16,26 +16,27 @@ listint_t *insert_node(listint_t **head, int number)
 
 	p = *head;
 
-	/* if its a empty list */
-	if (head == NULL || p == NULL)
+	if (head == NULL)
 		return (NULL);
 	new = new_node(number);
 	if (new == NULL)
 		return (NULL);
+	if (p == NULL) /* empty list*/
+	{	new->n = number;
+		*head = new;
+		return (new); }
 	if (p->next == NULL) /* if there is only a node*/
 	{
 		if (number >= p->n)
 		{	p->next = new;
-			return (new);
-		}
+			return (new); }
 		new->next = p;
 		*head = new;
 		return (new); }
 	while (p != NULL && p->n < number)
 	{	current = p; /*search to insert node */
 		p = p->next;
-		count++;
-	}
+		count++; }
 	if (current->next == NULL)
 	{	current->next = new; /* final of a list*/
 		return (new); }

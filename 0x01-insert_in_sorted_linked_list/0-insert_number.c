@@ -9,19 +9,17 @@
  */
 listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *p;
-	listint_t *new;
-	listint_t *current;
+	listint_t *p, *new, *current;
 	int count = 0;
 
 	p = *head;
-
 	new = new_node(number);
 	if (new == NULL)
 		return (NULL);
-	if (p == NULL || head == NULL) /* empty list*/
+	if (p == NULL) /* empty list*/
 	{	new->n = number;
 		*head = new;
+		p = *head;
 		return (new); }
 	if (p->next == NULL) /* if there is only a node*/
 	{
@@ -30,23 +28,26 @@ listint_t *insert_node(listint_t **head, int number)
 			return (new); }
 		new->next = p;
 		*head = new;
+		p = *head;
 		return (new); }
-	while (p != NULL && p->n < number)
+	while (p->next != NULL && p->n < number)
 	{	current = p; /*search to insert node */
 		p = p->next;
 		count++; }
-	if (current->next == NULL)
-	{	current->next = new; /* final of a list*/
-		return (new); }
-	if ((p->n > number) && (p->next != NULL) && (count == 0))
-	{	new->next = p; /* new node its > firts node of a list */
-		*head = new;
-		return (new); }
-	if (p->next != NULL) /* if not is the last node of a list */
-	{	new->next = current->next;
-		current->next = new;
-		return (new); }
-return (NULL);
+	if (p->next == NULL)
+	{
+		if (p->n > new->n)
+		{	current->next = new; /* final of a list*/
+			new->next = p;
+			p->next = NULL; }
+		current->next = p;
+		p->next = new;
+		new->next = NULL;
+		return (new);
+	}
+	current->next = new;
+	new->next = p;
+	return (new);
 }
 /**
  * new_node  - alloc a new node in memory

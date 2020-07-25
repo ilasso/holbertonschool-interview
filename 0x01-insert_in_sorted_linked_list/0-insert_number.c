@@ -39,7 +39,8 @@ listint_t *insert_node(listint_t **head, int number)
 		if (p->n > new->n)
 		{	current->next = new; /* final of a list*/
 			new->next = p;
-			p->next = NULL; }
+			p->next = NULL;
+			return (new); }
 		current->next = p;
 		p->next = new;
 		new->next = NULL;

@@ -12,12 +12,11 @@ If n is impossible to achieve, return 0
 
 
 def minOperations(n):
-    lista = []
     numberKey = 0
-    for value in range(2, n):
-        if ((n % value) == 0):
-            minOper = 2 + ((n / value) - 2) + 1 + (value - 1)
-            lista.append(int(minOper))
-    if lista:
-        return (min(lista))
-    return 0
+    if (n == 1):
+        return 0
+    for value in range(2, n + 1):
+        while (n % value == 0):
+            numberKey = numberKey + value
+            n = n / value
+    return numberKey

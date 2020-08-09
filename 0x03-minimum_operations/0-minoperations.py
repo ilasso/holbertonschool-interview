@@ -12,6 +12,11 @@ If n is impossible to achieve, return 0
 
 
 def minOperations(n):
+    """
+    minOperations
+    calculates the fewest number of operations needed
+    to result in exactly n H characters
+    """
     numberKey = 0
     if (n <= 1):
         return 0

@@ -13,7 +13,7 @@ If n is impossible to achieve, return 0
 
 def minOperations(n):
     numberKey = 0
-    if (n == 1 or n == 0):
+    if (n <= 1):
         return 0
     for value in range(2, n + 1):
         while (n % value == 0):

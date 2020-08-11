@@ -22,6 +22,6 @@ def minOperations(n):
     numberKey = 0
     for value in range(2, n + 1):
         while n % value == 0:
-            numberKey = numberKey + value
-            n = n / value
+            numberKey += value
+            n /= value
     return numberKey

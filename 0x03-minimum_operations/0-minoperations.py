@@ -17,11 +17,11 @@ def minOperations(n):
     calculates the fewest number of operations needed
     to result in exactly n H characters
     """
-    if (n <= 1):
+    if n <= 1:
         return 0
     numberKey = 0
     for value in range(2, n + 1):
-        while ((n % value) == 0):
+        while n % value == 0:
             numberKey = numberKey + value
             n = n / value
     return numberKey

@@ -24,7 +24,7 @@ void printgrid(int grid[3][3])
  *sandpiles_sum - function that computes the sum of two sandpiles
  *@grid1: grid a
  *@grid2: grid b
- *Return: void
+ *Return: voyd
  */
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {

@@ -34,7 +34,9 @@ if __name__ == '__main__':
                 for i, j in sorted(dictstatus.items()):
                     if j != 0:
                         print("{:d}: {:d}".format(int(i), int(j)))
+                    dictstatus[i] = 0
                 totalsize = 0
+
     except KeyboardInterrupt:
         print("File size: {:d}".format(totalsize))
         for i, j in sorted(dictstatus.items()):

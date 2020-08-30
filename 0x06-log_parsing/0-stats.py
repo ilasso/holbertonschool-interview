@@ -33,7 +33,7 @@ if __name__ == '__main__':
                 print("File size: {:d}".format(totalsize))
                 for i, j in sorted(dictstatus.items()):
                     if j != 0:
-                        print("{}:{}".format(i, j))
+                        print("{}: {}".format(i, j))
     except KeyboardInterrupt:
         print("File size: {:d}".format(totalsize))
         for i, j in sorted(dictstatus.items()):

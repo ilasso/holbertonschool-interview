@@ -31,7 +31,7 @@ if __name__ == '__main__':
                 dictstatus[codestatus] = int(dictstatus[codestatus]) + 1
             if count % 10 == 0:
                 print("File size: {:d}".format(totalsize))
-                for i, j in sorted(dictstatus.items()):
+                for i, j in dictstatus.items():
                     if j != 0:
                         print("{:d}: {:d}".format(int(i), int(j)))
     except KeyboardInterrupt:

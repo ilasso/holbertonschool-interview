@@ -17,11 +17,14 @@ print these statistics from the beginning:
 
 import sys
 
-def printLog(totalsize,dictstatus):
+
+def printLog(totalsize, dictstatus):
     print("File size: {}".format(totalsize))
     for i, j in sorted(dictstatus.items()):
         if j != 0:
             print("{}: {}".format(i, j))
+
+
 if __name__ == "__main__":
     totalsize = 0
     dictstatus = {"200": 0, "301": 0, "400": 0, "401": 0,
@@ -36,9 +39,9 @@ if __name__ == "__main__":
             if codestatus in dictstatus:
                 dictstatus[codestatus] = int(dictstatus[codestatus]) + 1
                 if count % 10 == 0:
-                    printLog(totalsize,dictstatus)
+                    printLog(totalsize, dictstatus)
 
     except KeyboardInterrupt:
-        printLog(totalsize,dictstatus)
+        printLog(totalsize, dictstatus)
         raise
-    printLog(totalsize,dictstatus)
+    printLog(totalsize, dictstatus)

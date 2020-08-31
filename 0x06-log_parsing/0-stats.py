@@ -22,22 +22,23 @@ def printLog(totalsize,dictstatus):
     for i, j in sorted(dictstatus.items()):
         if j != 0:
             print("{}: {}".format(i, j))
+if __name__ == "__main__":
+    totalsize = 0
+    dictstatus = {"200": 0, "301": 0, "400": 0, "401": 0,
+                  "403": 0, "404": 0, "405": 0, "500": 0}
+    count = 0
+    try:
+        for sti in sys.stdin:
+            count += 1
+            spl = sti.split()
+            totalsize += int(spl[8])
+            codestatus = spl[7]
+            if codestatus in dictstatus:
+                dictstatus[codestatus] = int(dictstatus[codestatus]) + 1
+                if count % 10 == 0:
+                    printLog(totalsize,dictstatus)
 
-totalsize = 0
-dictstatus = {"200": 0, "301": 0, "400": 0, "401": 0,
-              "403": 0, "404": 0, "405": 0, "500": 0}
-count = 0
-try:
-    for sti in sys.stdin:
-        count += 1
-        spl = sti.split()
-        totalsize += int(spl[8])
-        codestatus = spl[7]
-        if codestatus in dictstatus:
-            dictstatus[codestatus] = int(dictstatus[codestatus]) + 1
-        if count % 10 == 0:
-            printLog(totalsize,dictstatus)
-
-except KeyboardInterrupt:
+    except KeyboardInterrupt:
+        printLog(totalsize,dictstatus)
+        raise
     printLog(totalsize,dictstatus)
-    raise

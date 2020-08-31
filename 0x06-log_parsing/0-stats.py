@@ -16,6 +16,13 @@ print these statistics from the beginning:
 """
 
 import sys
+
+def printLog(totalsize,dictstatus):
+    print("File size: {}".format(totalsize))
+    for i, j in sorted(dictstatus.items()):
+        if j != 0:
+            print("{}: {}".format(i, j))
+
 totalsize = 0
 dictstatus = {"200": 0, "301": 0, "400": 0, "401": 0,
               "403": 0, "404": 0, "405": 0, "500": 0}
@@ -29,13 +36,8 @@ try:
         if codestatus in dictstatus:
             dictstatus[codestatus] = int(dictstatus[codestatus]) + 1
         if count % 10 == 0:
-            print("File size: {}".format(totalsize))
-            for i, j in dictstatus.items():
-                if j != 0:
-                    print("{}: {}".format(i, j))
+            printLog(totalsize,dictstatus)
+
 except KeyboardInterrupt:
-    print("File size: {}".format(totalsize))
-    for i, j in sorted(dictstatus.items()):
-        if j != 0:
-            print("{}: {}".format(i, j))
+    printLog(totalsize,dictstatus)
     raise

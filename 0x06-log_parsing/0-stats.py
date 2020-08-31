@@ -30,13 +30,13 @@ if __name__ == '__main__':
             if codestatus in dictstatus:
                 dictstatus[codestatus] = int(dictstatus[codestatus]) + 1
             if count % 10 == 0:
-                print("File size: {:d}".format(totalsize))
+                print("File size: {}".format(totalsize))
                 for i, j in dictstatus.items():
                     if j != 0:
-                        print("{:d}: {:d}".format(int(i), int(j)))
+                        print("{}: {}".format(i, j))
     except KeyboardInterrupt:
-        print("File size: {:d}".format(totalsize))
+        print("File size: {}".format(totalsize))
         for i, j in sorted(dictstatus.items()):
             if j != 0:
-                print("{:d}:{:d}".format(int(i), int(j)))
+                print("{}: {}".format(i, j))
         raise

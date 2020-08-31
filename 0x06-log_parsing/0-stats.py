@@ -15,7 +15,6 @@ print these statistics from the beginning:
   status codes should be printed in ascending order
 """
 
-if __name__ == '__main__':
     import sys
     totalsize = 0
     dictstatus = {"200": 0, "301": 0, "400": 0, "401": 0,

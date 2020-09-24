@@ -1,9 +1,12 @@
 #!/usr/bin/python3
-""" """
+""" module:0:validate_utf8
+    validates if a list of integers are valid utf-8
+"""
+
 
 def validUTF8(data):
     """
-
+    validates if a list of integers are valid utf-8
     """
     n_bytes = 0
 

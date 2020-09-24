@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ """
 
-
 def validUTF8(data):
     """
 
@@ -30,7 +29,7 @@ def validUTF8(data):
                 return False
         n_bytes -= 1
 
-        if n_bytes == 0:
-            return True
-        else:
-            return False
+    if n_bytes == 0:
+        return True
+    else:
+        return False

@@ -2,6 +2,10 @@
 
 
 def validUTF8(data):
+    """
+    ok
+    """
+
     cnt = 0
     for x in data:
         x = bin(x)[2:].zfill(8)

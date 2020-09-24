@@ -2,8 +2,7 @@
 
 def validUTF8(data):
     """
-    :type data: List[int]
-    :rtype: bool
+
     """
     # Number of bytes in the current UTF-8 character
     n_bytes = 0

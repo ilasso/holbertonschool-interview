@@ -10,6 +10,8 @@ def rain(walls):
     calculates the amount of water trapped. The only argument
     passed is the walls, in form of a list.
     """
+    if not walls:
+        return 0
 
     water = 0  # keeps track of the total water as we traverse the walls map
 

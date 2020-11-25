@@ -17,8 +17,8 @@ def rain(walls):
 
     #  lists to store the left_max and right_max of each point in the map
 
-    left_max = [0]*n
-    right_max = [0]*n
+    left_max = [0] * n
+    right_max = [0] * n
 
     #  default values
     left_max[0] = walls[0]

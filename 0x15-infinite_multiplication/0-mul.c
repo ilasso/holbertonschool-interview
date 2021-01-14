@@ -1,131 +1,80 @@
-#include "holberton.h"
 #include <stdio.h>
 #include <stdlib.h>
-/**
- * add - addition of parcial products
- * @p: parcial product
- * @mg: big malloc
- * @i: size of big malloc - 1
- * @tp: size of parcial product - 1
-*/
-void add(char *p, char *mg, int i, int tp)
-{
-	int pos = tp, a = 0, b = 0, car = 0, res = 0;
-	int cont = tp, aux = 0;
+#include <string.h>
 
-	for (; cont >=  0; cont--, i--, pos--)
-	{
-		a = *(p + pos) - '0';
-		b = *(mg + i) - '0';
-		res = (a + b) + car;
-		car = res / 10;
-		res = (res % 10) + '0';
-		*(mg + i) = res;
-	}
-	res = 0;
-	for (aux = i - 1; aux >= 0; aux--)
-	{
-		a = *(mg + aux) - '0';
-		a += a + car;
-		car = a / 10;
-		a = (a % 10) + '0';
-		*(mg + aux) = a;
-	}
-}
 /**
- * setiar - fill the pointer with 0
- * @s: pointer
- * @a: size of pointer
+ * check_error - error checker
+ * @argc: number of arguments
+ * @argv: an array consisting arguments
+ *
+ * Return: 0 | Error
  */
-void setiar(char *s, int a)
-{
-	int i;
 
-	for (i = 0; i < a; i++)
-		s[i] = '0';
-}
-/**
- * parcial - give the parcial malloc
- * @a: size one
- * Return: parcial malloc
- */
-char *parcial(int a)
+int check_error(int argc, char **argv)
 {
-	int i;
-	char *p;
-
-	p = malloc(a);
-	if (!p)
-		return (NULL);
-	for (i = 0; i < a; i++)
-		p[i] = '0';
-	return (p);
-}
-/**
- * grande - give big malloc
- * @a: size one
- * @b: size two
- * Return: malloc
- */
-char *grande(int a, int b)
-{
-	int i;
-	char *p;
-
-	p = malloc(a + b);
-	if (!p)
-		return (NULL);
-	for (i = 0; i < a + b; i++)
-		p[i] = '0';
-	return (p);
-}
-
-/**
- * main - check the code for Holberton School students.
- * @argv: array of pointers store the arguments
- * @argc: quantity of arguments
- * Return: Always 0.
- */
-int main(int argc, char *argv[])
-{
-	int t1, t2, t3, a = 0, b = 0, j = 0, aux = 0, car, g, ind;
-	char *mg, *p, *size1, *size2;
+	int i, j;
 
 	if (argc != 3)
-		Perror();
-	else
-	{ numero(argv[1], argv[2]);
-		t1 = tama(argv[1]);
-		t2 = tama(argv[2]);
-		ind = t1 + t2;
-		mg = grande(t1, t2);
-		if (t1 >= t2)
-		{size1 = argv[1];
-			size2 = argv[2];
-			b = t1 - 1;
-			a = t2 - 1;
-		t3 = t1 + 1; }
-		else
-		{ size1 = argv[2];
-			size2 = argv[1];
-			b = t2 - 1;
-			a = t1 - 1;
-		t3 = t2 + 1; }
-		g = b;
-		p = parcial(t3);
-		j = b + 1;
-		for (; a >= 0; a--, ind--)
-		{ car = 0;
-			b = g;
-			j = g + 1;
-			setiar(p, t3);
-			for (; b >= 0; b--, j--)
-			{ aux = ((size2[a] - '0') * (size1[b] - '0'));
-				aux = aux + car;
-				p[j] = ((aux % 10) + '0');
-			car = aux / 10;	}
-			p[j] = (car + '0');
-		add(p, mg, (ind - 1), (t3 - 1)); }
-	impresion(mg, (t1 + t2)); }
+	{
+		printf("Error\n");
+		exit(98);
+	}
+	for (i = 1; i < argc; i++)
+	{
+		for (j = 0; argv[i][j]; j++)
+		{
+			if (argv[i][j] > '9' || argv[i][j] < '0')
+			{
+				printf("Error\n");
+				exit(98);
+			}
+		}
+	}
 	return (0);
 }
+
+/**
+ * main - entry point
+ * @argc: number of arguments
+ * @argv: an array consisting arguments
+ *
+ * Return: 0 | 1
+ */
+
+int main(int argc, char **argv)
+{
+	int len1, len2, carry, a, b, i, j;
+	int *r;
+
+	check_error(argc, argv);
+	len1 = strlen(argv[1]), len2 = strlen(argv[2]);
+	if (argv[1][0] == '0' || argv[2][0] == '0')
+	{
+		printf("0\n");
+		return (EXIT_SUCCESS);
+	}
+	r = calloc(len1 + len2, sizeof(*r));
+	if (!r)
+		return (EXIT_FAILURE);
+	for (i = len1 - 1; i >= 0; i--)
+	{
+		carry = 0;
+		a = argv[1][i] - '0';
+		for (j = len2 - 1; j >= 0; j--)
+		{
+			b = argv[2][j] - '0';
+			carry += r[i + j + 1] + (a * b);
+			r[j + i + 1] = carry % 10;
+			carry /= 10;
+		}
+		if (carry > 0)
+			r[i + j + 1] += carry;
+	}
+	a = r[0] == 0 ? 1 : 0;
+	for (; a < len1 + len2; a++)
+		printf("%d", r[a]);
+	printf("\n");
+	free(r);
+	return (EXIT_SUCCESS);
+}
+
